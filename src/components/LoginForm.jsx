@@ -4,8 +4,9 @@ import axios from "axios";
 const LoginForm = () => {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
-    const hanldeSubmit = (e) => {
+    const hanldeSubmit = async (e) => {
         e.preventDefault();
 
         const authObject = {
@@ -14,9 +15,16 @@ const LoginForm = () => {
             "User-Secret": password,
         };
         try {
-            
+            await axios.get("https://api.chatengine.io/chats", {
+                headers: authObject,
+            });
+
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+
+            window.location.reload();
         } catch (error) {
-            
+            setError('Incorrect credentials')
         }
     };
 
@@ -45,6 +53,9 @@ const LoginForm = () => {
                             <span>Start Chating</span>
                         </button>
                     </div>
+                    <h2 className="error" >
+                        { error }
+                    </h2>
                 </form>
             </div>
         </div>
