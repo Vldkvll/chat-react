@@ -89,6 +89,8 @@
   }
   
   .chat-subtitle {
+    display: flex;
+    flex-direction: column;
     color: #7554a0;
     font-weight: 600;
     font-size: 12px;
@@ -96,15 +98,18 @@
   }
   
   .message-row {
-    float: left;
-    width: 100%;
+    /* float: left; */
     display: flex;
+    justify-content: flex-start;
+    width: 100%;
     margin-left: 18px;
   }
   
   .message-block {
     width: 100%;
     display: inline-block;
+    display: flex;
+    justify-content: flex-end;
   }
   
   .message-avatar {
@@ -123,6 +128,7 @@
     font-size: 16px;
     border-radius: 6px;
     max-width: 60%;
+    margin-bottom: 5px;
   }
   
   .message-image {
